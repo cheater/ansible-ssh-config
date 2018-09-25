@@ -50,6 +50,10 @@ options:
   user_known_hosts_file:
     description:
       - Sets the user known hosts file option
+  identities_only:
+    description:
+      - Only use the specified identity files, even if ssh-agent or a PKCS11Provider offers more identities.
+    choices: ['yes', 'no']
   strict_host_key_checking:
     description:
       - Whether to strictly check the host key when doing connections to the remote host
