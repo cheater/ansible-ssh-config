@@ -701,7 +701,7 @@ def main():
             hostname=dict(type='str'),
             port=dict(type='str'),
             remote_user=dict(type='str'),
-            identity_file=dict(type='str'),
+            identity_file=dict(),
             user=dict(default=None, type='str'),
             user_known_hosts_file=dict(default=None, type='str'),
             proxycommand=dict(default=None, type='str'),
@@ -709,6 +709,7 @@ def main():
                 default=None,
                 choices=['yes', 'no', 'ask']
             ),
+            identities_only=dict(default=None, choices=['yes', 'no']),
         ),
         supports_check_mode=True
     )
@@ -721,6 +722,7 @@ def main():
         identity_file=module.params.get('identity_file'),
         user=module.params.get('remote_user'),
         strict_host_key_checking=module.params.get('strict_host_key_checking'),
+        identities_only=module.params.get('identities_only'),
         user_known_hosts_file=module.params.get('user_known_hosts_file'),
         proxycommand=module.params.get('proxycommand'),
     )
