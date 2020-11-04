@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-__version__ = '0.3.0'
+__version__ = '0.3.1'
 
 DOCUMENTATION = '''
 ---
@@ -111,6 +111,7 @@ import fnmatch
 import os
 import re
 import socket
+from future.utils import iteritems
 
 SSH_PORT = 22
 proxy_re = re.compile(r"^(proxycommand)\s*=*\s*(.*)", re.I)
@@ -341,7 +342,7 @@ class SSHConfig (object):
 
         ret = {}
         for match in matches:
-            for key, value in match['config'].iteritems():
+            for key, value in iteritems(match['config']):
                 if key not in ret:
                     # Create a copy of the original value,
                     # else it will reference the original list
@@ -635,7 +636,7 @@ class ConfigParser(object):
                 file_content += host_item.get("value") + "\n"
                 continue
             host_item_content = "Host {0}\n".format(host_item.get("host"))
-            for key, value in host_item.get("options").iteritems():
+            for key, value in iteritems(host_item.get("options")):
                 if key in replacements:
                     key = replacements[key]
                 if isinstance(value, list):
