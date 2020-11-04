@@ -3,6 +3,11 @@ ansible-ssh-config
 
 A module for Ansible for configuring ssh configuration files.
 
+# Known Bugs
+
+If this script fails, eg due to a syntax error in the Python code, it is prone
+to delete the ssh config file it was editing.
+
 # Why?
 
 We have several libraries that carry shared functionality between
