@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-__version__ = '0.3.1'
+__version__ = '0.3.2'
 
 DOCUMENTATION = '''
 ---
@@ -111,7 +111,10 @@ import fnmatch
 import os
 import re
 import socket
-from future.utils import iteritems
+import sys
+
+if sys.version_info[0] == 2:
+    from future.utils import iteritems
 
 SSH_PORT = 22
 proxy_re = re.compile(r"^(proxycommand)\s*=*\s*(.*)", re.I)
